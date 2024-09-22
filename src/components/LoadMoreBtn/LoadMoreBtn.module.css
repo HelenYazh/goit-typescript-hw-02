@@ -1,0 +1,19 @@
+.btn {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 240px;
+  background-color: #034cf4;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn:hover,
+.btn:focus {
+  transform: scale(1.05);
+  transition: transform 0.2s linear;
+}

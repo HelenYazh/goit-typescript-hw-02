@@ -1,0 +1,7 @@
+.loader {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(118, 118, 118);
+}

@@ -1,0 +1,11 @@
+body {
+  margin: 0;
+  margin-bottom: 20px;
+  background-color: #c1ecf659;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}

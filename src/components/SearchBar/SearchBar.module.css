@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  background-color: #034cf4;
+  height: 50px;
+}
+.form {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.input {
+  height: 30px;
+  width: 250px;
+  border: none;
+}
+.btn {
+  all: unset;
+  cursor: pointer;
+  background-color: #fff;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border: none;
+}
