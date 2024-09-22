@@ -6,17 +6,17 @@ import ImageModal from "./components/ImageModal/ImageModal";
 import Loader from "./components/Loader/Loader";
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
 import SearchBar from "./components/SearchBar/SearchBar";
-import { fetchPhotosByKeyword } from "./photos-api";
+import { fetchPhotosByKeyword, Photo } from "./photos-api";
 
-function App() {
-  const [photos, setPhotos] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
-  const [keyword, setKeyword] = useState("");
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
+const App: React.FC = () => {
+  const [photos, setPhotos] = useState<Photo[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(1);
+  const [hasMore, setHasMore] = useState<boolean>(true);
+  const [keyword, setKeyword] = useState<string>("");
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
 
   useEffect(() => {
     if (!keyword) return;
@@ -24,9 +24,9 @@ function App() {
     const fetchPhotos = async () => {
       try {
         setLoading(true);
-        const data = await fetchPhotosByKeyword(page, keyword);
+        const data: Photo[] = await fetchPhotosByKeyword(page, keyword);
         setPhotos((prevPhotos) =>
-          page === 1 ? data : [...prevPhotos, ...data]
+          page === 1 ? data : [...(prevPhotos || []), ...data]
         );
 
         if (data.length < 10) {
@@ -48,7 +48,7 @@ function App() {
     fetchPhotos();
   }, [page, keyword]);
 
-  const handleSearch = (newKeyword) => {
+  const handleSearch = (newKeyword: string) => {
     if (newKeyword === keyword) return;
 
     setError(false);
@@ -61,7 +61,7 @@ function App() {
   const onLoadMore = () => {
     setPage((prevPage) => prevPage + 1);
   };
-  const onOpenModal = (image) => {
+  const onOpenModal = (image: Photo) => {
     setSelectedImage(image);
     setModalIsOpen(true);
   };
@@ -92,6 +92,6 @@ function App() {
       )}
     </div>
   );
-}
+};
 
 export default App;

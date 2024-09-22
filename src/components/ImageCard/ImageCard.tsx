@@ -1,6 +1,12 @@
 import css from "./ImageCard.module.css";
 
-const ImageCard = ({ alt, smallImg, likes }) => {
+interface ImageCardProps {
+  alt: string;
+  smallImg: string;
+  likes: number;
+}
+
+const ImageCard: React.FC<ImageCardProps> = ({ alt, smallImg, likes }) => {
   return (
     <div>
       <img className={css.img} src={smallImg} alt={alt} />
